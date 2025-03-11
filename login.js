@@ -1,8 +1,5 @@
-var contRegistro=-1;
-let tipoIdent=[contRegistro];
-const cc="C.C"
-const ti="T.I"
-const dni="DNI"
+let contRegistro=0;
+let tipoIdent=[];
 
 let login = parseInt(prompt("\n 1. Iniciar sesion \n 2. Registrar \n Elige respuesta (valida)"));//Inicio programa, solicitando login
 
@@ -10,41 +7,42 @@ let login = parseInt(prompt("\n 1. Iniciar sesion \n 2. Registrar \n Elige respu
 switch (login) {
     case 1:
         inicioSesion();//Invoca funcion que solicita parametros de inicio
-        
+
         break;
     case 2:
-        contRegistro=+1
         registro();//Invoca funcion que solicita parametros de registro
-        
         break;       
 
     
     default: console.log(`Por favor ingresa una opcion valida`);
     break;
+    
 }
 
 //funcion para registro de usuario
-function registro(){
+function registro(){ 
+    let completoID=0;
     do{
-    let tipoId = prompt(`Ingresa tu identificación \n CC.1 \n TI.2 \n DNI.3`);
+    let tipoId = parseInt(prompt(`Ingresa tu identificación \n CC.1 \n TI.2 \n DNI.3`));
     switch(tipoId){
         case 1:
-        tipoIdent[contRegistro]=cc;
+        tipoIdent[contRegistro]="C.C";
         break;
         case 2:
-        tipoIdent[contRegistro]=ti;
+        tipoIdent[contRegistro]="T.I";
         break;
         case 3:
-        tipoIdent[contRegistro]=dni;
+        tipoIdent[contRegistro]="DNI";
         break;  
-        default: console.log(`Ingresaste un valor incorrecto`);
+        default: 
+            console.log("Dato incorrecto")
             break; 
     }
-    let completo=parseInt(prompt("Desea guardar su respuesta \n 1. Si \n 0. No, repetir"));
-    if(completo==1){
+    completoID=parseInt(prompt("Desea guardar su respuesta \n 1. Si \n 0. No, repetir"));
+    if(completoID==1){
         contRegistro+=1;
     }
-    }while(completo!=1);
+    }while(completoID!=1);
     
 
     /* let identificacion = parseInt(prompt(`Ingresa tu numero de ${tipoIdent}`));
