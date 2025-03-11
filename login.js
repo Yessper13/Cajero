@@ -26,7 +26,7 @@ switch (login) {
 //funcion para registro de usuario
 function registro(){
     do{
-    let tipoId = prompt(`Ingresa tu identificaciÓn (\n CC.1 \n TI.2 \n DNI.3`);
+    let tipoId = prompt(`Ingresa tu identificación \n CC.1 \n TI.2 \n DNI.3`);
     switch(tipoId){
         case 1:
         tipoIdent[contRegistro]=cc;
@@ -43,15 +43,15 @@ function registro(){
     let completo=parseInt(prompt("Desea guardar su respuesta \n 1. Si \n 0. No, repetir"));
     if(completo==1){
         contRegistro+=1;
-    }else{}
-    }while(completo==0);
+    }
+    }while(completo!=1);
     
 
     /* let identificacion = parseInt(prompt(`Ingresa tu numero de ${tipoIdent}`));
     let userReg = prompt(`Crea un usuario de al menos 8 caracteres (ej. PROJAS)`);
     let email = prompt(`Ingresa un correo electronico`);
-    let paswordReg = pareInt(prompt(`Ingresa una clave de 4 digitos (ej. 1562)`));
-    let confirmarPsw = pareInt(prompt(`Confirma tu clave (ej. 1562)`)); */
+    let paswordReg = parseInt(prompt(`Ingresa una clave de 4 digitos (ej. 1562)`));
+    let confirmarPsw = parseInt(prompt(`Confirma tu clave (ej. 1562)`)); */
 }
 
 //funcion para inicio de sesion de usuario
