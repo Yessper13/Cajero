@@ -23,7 +23,7 @@ switch (login) {
 function registro(){ 
     let completoID=0;
     do{
-    let tipoId = parseInt(prompt(`Ingresa tu identificación \n CC.1 \n TI.2 \n DNI.3`));
+    let tipoId = parseInt(prompt(`Ingresa tu identificación \n CC.1 \n TI.2 \n DNI.3`));//se agrega parseInt para que el valor de tipoId no sea string
     switch(tipoId){
         case 1:
         tipoIdent[contRegistro]="C.C";
