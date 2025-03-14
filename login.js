@@ -12,7 +12,7 @@ let login = parseInt(prompt("\n 1. Iniciar sesion \n 2. Registrar \n Elige respu
 switch (login) {
     case 1:
         inicioSesion();//Invoca funcion que solicita parametros de inicio
-        
+
         break;
     case 2:
         registro();//Invoca funcion que solicita parametros de registro
@@ -123,6 +123,7 @@ function registro(){
             
         }while (repetir !=0);
         contRegistro+=1;
+
 
   
 }//Fin de la función Registro
