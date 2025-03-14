@@ -12,7 +12,7 @@ let login = parseInt(prompt("\n 1. Iniciar sesion \n 2. Registrar \n Elige respu
 switch (login) {
     case 1:
         inicioSesion();//Invoca funcion que solicita parametros de inicio
-
+        
         break;
     case 2:
         registro();//Invoca funcion que solicita parametros de registro
@@ -42,6 +42,7 @@ function registro(){
                 console.log("Dato incorrecto");
                 break; 
         }
+        
      //solo bucle se repite siempre y cuando, el usuario quiera elegir otro tipo de ID 
     }while(confirmarOpcion()!=1);
    
@@ -95,33 +96,36 @@ function registro(){
     do {
         repetir = 0;
         let password = parseInt(prompt(`Ingresa una clave de 4 digitos (ej. 1562)`));
-        let confirmPassword = parseInt(prompt(`Confirmar contraseña (ej. 1562))`));
-        if(password != null && password != ""){
-            if (confirmarOpcion()==1) {
-                if (password === confirmPassword) {
-                    pws[contRegistro]=password;
-                    console.log("Tipo de identificación ingresado:", tipoIdent[contRegistro]);  
-                    console.log("Numero de",tipoIdent[contRegistro],":",identify[contRegistro]);
-                    console.log("Tu usuario es",user[contRegistro]);
-                    console.log("Tu correo es",email[contRegistro]);
-                    console.log("Tu password es",pws[contRegistro]);
-                    contRegistro+=1;
+
+        if(password != null && password != "" && password>=999 && password<10000){
+            let confirmPassword = parseInt(prompt(`Confirmar contraseña (ej. 1562))`));
+                if (confirmarOpcion()==1) {
+                    if (password === confirmPassword) {
+                        pws[contRegistro]=password;
+                        console.log("Tipo de identificación ingresado:", tipoIdent[contRegistro]);  
+                        console.log("Numero de",tipoIdent[contRegistro],":",identify[contRegistro]);
+                        console.log("Tu usuario es",user[contRegistro]);
+                        console.log("Tu correo es",email[contRegistro]);
+                        console.log("Tu password es",pws[contRegistro]); 
+
+                    }
+
+
+
+                    }else{
+                        repetir = parseInt(prompt("La clave ingresada no es correcta, \n 1. intentar de nuevo"));
+
+                    }              
                 }else{
-                    repetir = parseInt(prompt("La clave ingresada no es correcta, \n 1. intentar de nuevo"));
-                    
-                }              
-            }else{
                 repetir =1;
-            }
+                }
+            console.log("Tu cuenta de banco tiene el numero: ",contRegistro)
+            
+        }while (repetir !=0);
+        contRegistro+=1;
 
-        }
-    } while (repetir !=0);
-
-
-/*
-    let paswordReg = parseInt(prompt(`Ingresa una clave de 4 digitos (ej. 1562)`));
-    let confirmarPsw = parseInt(prompt(`Confirma tu clave (ej. 1562)`)); */
-}
+  
+}//Fin de la función Registro
 
 function confirmarOpcion() {
     completoID=parseInt(prompt("Desea guardar su respuesta \n 1. Si \n 0. No, repetir"));
