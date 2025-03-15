@@ -103,26 +103,18 @@ function registro(){
                 break; 
         }
         
-        
      //solo bucle se repite siempre y cuando, el usuario quiera elegir otro tipo de ID 
     }while(confirmarOpcion(completoID)!=1);
    
     //Se agrega campo de registro de identificacion
-    //Se agrega campo de registro de identificacion
     let identificacion = 0;
     let repetir =0;
-    let repetir =0;
     do { 
-        repetir = 0;
         repetir = 0;
         identificacion =parseInt(prompt(`Ingresa tu numero de ${tipoIdent[contRegistro]}`));
         if (identificacion !== null && identificacion !== "" && !isNaN(identificacion)) {
             if (confirmarOpcion(completoID)==1) {
                 identify[contRegistro]=identificacion;
-                
-            }else{
-                repetir =1;
-            }
                 
             }else{
                 repetir =1;
