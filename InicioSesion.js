@@ -12,21 +12,20 @@ function inicioSesion(){
     do{//Bucle inicio sesion
         aprobacionLogin=0;
         let passwordIn=parseInt();
-        account = parseInt(prompt("Ingresa tu numero de cuenta"));//variable para guardar el numero de cuenta y ubicar la posicion de los vectores a comparar
+        account = parseInt(prompt("Ingresa tu numero de cuenta:"));//variable para guardar el numero de cuenta y ubicar la posicion de los vectores a comparar
         let userIn = prompt(`Ingresa tu usuario (ej.PROJAS)`);//Variable para guardar el usuario y compararlo con el vector user
         //condicional para validar que coincida el ingreso a la cuenta
-        console.log(user[account])
         if(userIn==user[account]){
             while(tryPws<3){//bucle validador de contraseña
                 passwordIn = prompt(`ingresa tu contraseña de 4 digitos (ej. 1562)`);//Variable para guardar la contraseña y compararla con el vector pws
                 if(passwordIn==pws[account]){
-                console.log("Inicio de sesion completo");//mensaje de bienvenida
+                alert("Inicio de sesion completo en la cuenta "+user[account]);//mensaje de bienvenida
                 tryPws=3 //Se asigna el valor de 3 al tryPws para salir del while
                 aprobacionLogin=1;//Valor que me aprueba la continuacion con las opciones dentro de la cuenta
                 repetir=2;//asignacion de valor para salir del ciclo y continuar
                 }
                 else{
-                    console.log("No coinciden la contraseña tienes: ",(intentos-1)," intentos");//mensaje de error por contraseña o usuario incorrecto
+                    alert("No coinciden la contraseña tienes: "+(intentos-1)+" intentos");//mensaje de error por contraseña o usuario incorrecto
                     intentos-=1
                     tryPws+=1
                     }

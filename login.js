@@ -46,7 +46,7 @@ do{
                 }
                 }while(optionsInside!=0)//Fin loop opciones a realizar
             }else{
-                console.log("Los datos ingresados no fueron válidos, hasta pronto")
+                alert("Los datos ingresados no fueron válidos, hasta pronto")
                 login=1;
             }
         
@@ -65,7 +65,7 @@ do{
 
 }while(login !=0);
 
-//funcion confirmacion
+//funcion confirmacion para registro de cuenta nueva
 function confirmarOpcion(completoID) {
      completoID=parseInt(prompt("Desea guardar su respuesta \n 1. Si \n 0. No, repetir"));
     return completoID;
