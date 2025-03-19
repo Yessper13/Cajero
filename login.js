@@ -10,6 +10,12 @@ export let user = [123,1233,];
 export let email = [123,1233,];
 export let pws = [1234,1233,];
 export let saldo =[10000,10000,];
+export let idRecepcion = [];
+export let idHistorico = [];
+export let historial = [];
+export let historialR = [];
+
+//export let contHist = parseInt(0);
 
 let login;
 let opciones =new Opciones();
@@ -23,13 +29,12 @@ do{
             if(aprobacionLogin==1){//comprobador de que se aprobo el login si no finaliza el switch y el programa
                 let optionsInside=parseInt();
                 do{//Loop para iniciar opciones   
-                optionsInside=parseInt(prompt("Que deseas realizar \n 1. Transferencia \n 2. Retiros \n 3. Consulta de saldo \n 4. Cambio contraseña \n 5. Recarga de saldo \n 0. Salir"));
+                optionsInside=parseInt(prompt("Que deseas realizar \n 1. Transferencia \n 2. Retiros \n 3. Consulta de saldo \n 4. Cambio contraseña \n 5. Recarga de saldo \n 6. Ver historial de movimientos \n 0. Salir"));
                 switch(optionsInside)
                 {
                     case 1:// Caso Transferencia
                     opciones.Transferencia();
                     break;
-        
                     case 2://Caso Retiros
                     opciones.Retiro();
                     break;
@@ -41,6 +46,9 @@ do{
                     break;
                     case 5:
                     opciones.RecargaSaldo();
+                    break;
+                    case 6:
+                    opciones.HistorialMovimientos();
                     break;
                 default: console.log("Opcion invalida");//Mensaje de salida  
                 }

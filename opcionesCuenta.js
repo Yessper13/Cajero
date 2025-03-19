@@ -1,7 +1,8 @@
 import { aprobacionLogin,account } from './InicioSesion.js'
-import { saldo,user,pws } from "./login.js";
 import { contraseña } from './Registro.js';
-
+import { idHistorico,idRecepcion,historial, historialR,saldo,user,pws } from './login.js';
+export {Opciones};
+let contHist =parseInt(0);
 function Opciones() {
     function Transferencia(){
         let loop1=parseInt(1);
@@ -19,7 +20,12 @@ function Opciones() {
                     saldo[account]-=valorconsig;
                     alert("La consignacion se ha realizado con exito a la cuenta "+consig+" ,por un valor de: "+valorconsig+"$")
                     loop2=0;
-                    loop1=0;        
+                    loop1=0;   
+                    idHistorico[contHist]=account
+                    idRecepcion[contHist]=consig
+                    historial.push({fecha: Date(),concepto: "Transferencia",valor: valorconsig,saldo: saldo[account],receptor: consig});
+                    historialR.push({fecha: Date(),concepto: "Recepcion",valor: valorconsig,saldo: saldo[consig],emisor:account})
+                    contHist+=1;
                 }
                 else{
                     alert("Valor de transaccion no valida o tienes saldo insuficiente")
@@ -86,13 +92,28 @@ function Opciones() {
         }
     }
     
-    return {//Retorno de funciones dentro de la funcion principal
+    function HistorialMovimientos() { //Realizazr funciones de retiro y de recarga de cuenta
+        let RegistroCont=parseInt(0);
+        for (let i = 0; i < idHistorico.length; i++) {
+            if (idHistorico[i] === account) {
+                console.log("\t Historial de transferencias");
+                console.log(`Registro ${RegistroCont + 1}\nFecha ${historial[i].fecha}\nConcepto ${historial[i].concepto}\nValor ${historial[i].valor}\nSaldo Restante ${historial[i].saldo}\nReceptor ${historial[i].receptor}`);            
+                RegistroCont++;
+            }else if(idRecepcion[i] === account){
+                console.log("\t Historial de Resepción");
+                console.log(`Registro ${RegistroCont + 1}\nFecha ${historialR[i].fecha}\nConcepto ${historialR[i].concepto}\nValor ${historialR[i].valor}\nSaldo Restante ${historialR[i].saldo}\nEmisor ${historialR[i].emisor}`);
+                RegistroCont++;
+            }
+        }      
+    }
+    return {
         Transferencia,
         Retiro,
         CambioContraseña,
         ConsultaSaldo,
-        RecargaSaldo
+        RecargaSaldo,
+        HistorialMovimientos
+
     };
 }
 
-export {Opciones}
