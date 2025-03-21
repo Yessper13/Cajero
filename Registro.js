@@ -23,6 +23,9 @@ function contraseña(antiguo) {
                         pws[contRegistro] = password;
                     }
                 }
+                else{
+                    repetir =1;
+                }
             } else {
                 console.log("La clave ingresada no es correcta, intentar de nuevo");
                 repetir = 1; //cuando esta variable es 1, se repetira el dowhile
@@ -36,7 +39,7 @@ function contraseña(antiguo) {
 function registro() {
 
     do {
-        let tipoId = parseInt(prompt(`Ingresa tu identificación \n CC.1 \n TI.2 \n DNI.3`));//se agrega parseInt para que el valor de tipoId no sea string
+        let tipoId = parseInt(prompt(`Ingresa tu identificación \n1. C.C \n2. T.I \n3. NIT`));//se agrega parseInt para que el valor de tipoId no sea string
         switch (tipoId) {
             case 1:
                 tipoIdent[contRegistro] = "C.C";
@@ -56,20 +59,25 @@ function registro() {
 
     //Se agrega campo de registro de identificacion
     let identificacion = 0;
-    let repetir = 0;
+    let repetir= parseInt(0);
     do {
-        repetir = 0;
-        identificacion = parseInt(prompt(`Ingresa tu numero de ${tipoIdent[contRegistro]}`));
-        if (identificacion !== null && identificacion !== "" && !isNaN(identificacion)) {
+        repetir =0;
+        identificacion = (prompt(`Ingresa tu numero de ${tipoIdent[contRegistro]}`));
+        if (identificacion !== null && identificacion !== "" && !isNaN(identificacion) && identificacion>0 && identificacion<10000000000) {
             alert("Identificacion ingresada: " + identificacion)
             if (confirmarOpcion(completoID) == 1) {
                 identify[contRegistro] = identificacion;
 
             } else {
-                repetir = 1;
+                alert("Intenta nuevamente")
+                repetir+=1;
             }
         }
-    } while (identificacion === "" || identificacion === null || isNaN(identificacion) || repetir != 0);
+        else{
+            alert("Solo se permiten numeros o numero no valido")
+            repetir+=1;
+        }
+    } while (repetir != 0);
 
     //Se agrega campo de registro de usuario
     do {
@@ -103,6 +111,6 @@ function registro() {
 
     //Se agrega funcion de registro de contraseña
     contraseña();
-    saldo[contRegistro] += 0
+    saldo[contRegistro]=0;
 
 }//Fin de la función Registro

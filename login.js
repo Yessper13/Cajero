@@ -4,9 +4,9 @@ import {registro} from './Registro.js'
 import {Opciones} from "./opcionesCuenta.js"
 export {confirmarOpcion}
 export let contRegistro=2;
-export let tipoIdent=[123,1233,];
+export let tipoIdent=["C.C","C.C",];
 export let identify = [123,1233,];
-export let user = [123,1233,]; 
+export let user = ["sistema1","sistema2",]; 
 export let email = [123,1233,];
 export let pws = [1234,1233,];
 export let saldo =[10000,10000,];
@@ -14,6 +14,7 @@ export let idRecepcion = [];
 export let idHistorico = [];
 export let historial = [];
 export let historialR = [];
+
 
 //export let contHist = parseInt(0);
 
