@@ -1,7 +1,8 @@
 import { aprobacionLogin} from './InicioSesion.js';
 import {inicioSesion} from  './InicioSesion.js'
-import {registro} from './Registro.js'
+import {registro,clienteNuevo} from './Registro.js'
 import {Opciones} from "./opcionesCuenta.js"
+
 export let contRegistro=2;
 export let tipoIdent=["C.C","C.C",];
 export let identify = [123,1233,];
@@ -29,7 +30,7 @@ do{
                 let optionsInside=parseInt();
                 do{//Loop para iniciar opciones   
                 optionsInside=parseInt(prompt("Que deseas realizar \n 1. Transferencia \n 2. Retiros \n 3. Consulta de saldo \n 4. Cambio contraseña \n 5. Recarga de saldo \n 6. Ver historial de movimientos \n 0. Salir"));//Pregunta para solicitar al usuario el tipo de movimiento a realizar
-                switch(optionsInside)//Cada caso invoca la funcion correspondiente de la clase opciones
+                switch(optionsInside)//Cada caso invoca la funcion correspondiente de la clase opcionesCuenta.js
                 {
                     case 1:// Caso Transferencia
                     opciones.Transferencia();// se invoca la funcion de consulta de transferencia
@@ -61,8 +62,15 @@ do{
         break;
         case 2:
             registro();//Invoca funcion que solicita parametros de registro
-            alert("Tu cuenta de banco tiene el numero: "+contRegistro+"\n Numero de"+tipoIdent[contRegistro]+":"+identify[contRegistro]+"\n Tu usuario es: "+user[contRegistro]+"\n Tu correo es: "+email[contRegistro]+"\nTu password es: "+pws[contRegistro]+"\n El saldo de la cuenta= "+saldo[contRegistro]);//Impresion de registro de cuenta nueva 
-            contRegistro+=1;
+            if (clienteNuevo === 0) {//si el cliente es nuevo, se realiza el registro correctamente
+                alert("Tu cuenta de banco tiene el numero: "+contRegistro+"\n Numero de"+tipoIdent[contRegistro]+":"+identify[contRegistro]+"\n Tu usuario es: "+user[contRegistro]+"\n Tu correo es: "+email[contRegistro]+"\nTu password es: "+pws[contRegistro]+"\n El saldo de la cuenta= "+saldo[contRegistro]);//Impresion de registro de cuenta nueva 
+                contRegistro+=1;
+            }else{//mensaje en caso de que el cliente ya exuste
+                alert("La identificacion ingresada ya se encuentra registrada, intenta de nuevo")
+            }
+                
+            
+            
         break;       
         /* default: console.log(`Por favor ingresa una opcion valida`);
         break; */
